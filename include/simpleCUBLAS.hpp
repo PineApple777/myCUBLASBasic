@@ -65,7 +65,7 @@
 
 #define CUBLASERR(err) \
 	if ( err != CUBLAS_STATUS_SUCCESS ) { \
-		printf("[ERR][%s:%d]\t\t[CUDNN error] %d\n", __FILE__, __LINE__, status); \
+		printf("[ERR][%s:%d]\t\t[CUBLAS error] %d\n", __FILE__, __LINE__, status); \
 		exit(EXIT_FAILURE); \
 	} \
 
