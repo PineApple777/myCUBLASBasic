@@ -69,4 +69,10 @@
 		exit(EXIT_FAILURE); \
 	} \
 
+#define BUFERR(buf) \
+	if ( buf == 0 ) { \
+		fprintf(stderr, "!!! host memory allocation error (#buf) \n"); \
+		exit(EXIT_FAILURE); \
+	} \
+
 #endif // _CUBLAS_BASIC

@@ -92,25 +92,13 @@ int main(int argc, char **argv) {
 
   /* Allocate host memory for the matrices */
   h_A = reinterpret_cast<float *>(malloc(n2 * sizeof(h_A[0])));
-
-  if (h_A == 0) {
-    fprintf(stderr, "!!!! host memory allocation error (A)\n");
-    return EXIT_FAILURE;
-  }
+  BUFERR(h_A);
 
   h_B = reinterpret_cast<float *>(malloc(n2 * sizeof(h_B[0])));
-
-  if (h_B == 0) {
-    fprintf(stderr, "!!!! host memory allocation error (B)\n");
-    return EXIT_FAILURE;
-  }
+  BUFERR(h_B);
 
   h_C = reinterpret_cast<float *>(malloc(n2 * sizeof(h_C[0])));
-
-  if (h_C == 0) {
-    fprintf(stderr, "!!!! host memory allocation error (C)\n");
-    return EXIT_FAILURE;
-  }
+  BUFERR(h_C);
 
   /* Fill the matrices with test data */
   for (i = 0; i < n2; i++) {
@@ -138,11 +126,7 @@ int main(int argc, char **argv) {
 
   /* Allocate host memory for reading back the result from device memory */
   h_C = reinterpret_cast<float *>(malloc(n2 * sizeof(h_C[0])));
-
-  if (h_C == 0) {
-    fprintf(stderr, "!!!! host memory allocation error (C)\n");
-    return EXIT_FAILURE;
-  }
+  BUFERR(h_C);
 
   /* Read the result back */
   CUBLASERR(cublasGetVector(n2, sizeof(h_C[0]), d_C, 1, h_C, 1));
